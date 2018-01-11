@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  IMPLEMENTING CLASSES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Rachel Wood.
+"""  # DONE 1.
 
 ########################################################################
 # Students:
@@ -39,8 +39,8 @@ def main():
     # UN-comment tests as you work the problems.
     ####################################################################
 
-#     run_test_init()
-#     run_test_append_string()
+    run_test_init()
+    run_test_append_string()
 #     run_test_double()
 #     run_test_shrink()
 #     run_test_double_then_shrink()
@@ -94,7 +94,7 @@ class Box(object):
           :type volume: int
         """
         # --------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE 2.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -102,6 +102,12 @@ class Box(object):
         #    DIFFICULTY:      3
         #    TIME ESTIMATE:   5 minutes.
         # --------------------------------------------------------------
+        if len(contents) <= volume:
+            self.contents = contents
+            self.volume = volume
+        else:
+            self.volume = volume
+            self.contents = ''
 
     def append_string(self, additional_contents):
         """
@@ -156,6 +162,18 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and continue working on the problem.
         # --------------------------------------------------------------
+        s = ''
+        contentstart = len(self.contents)
+        for k in range((len(additional_contents) + len(self.contents))
+                                   - self.volume):
+                s = s + additional_contents[k + (len(additional_contents) + len(self.contents))
+                                   - self.volume-1]
+
+        for k in range(len(additional_contents)-((len(additional_contents) + len(self.contents))
+                                   - self.volume)):
+                self.contents = self.contents + additional_contents[k-1]
+        return s
+
 
     def double(self):
         """
